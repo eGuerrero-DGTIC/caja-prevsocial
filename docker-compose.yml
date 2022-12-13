@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+  nextjs:
+    container_name: nextjs
+    build: ./nextjs
+    volumes:
+      - ./nextjs:/app
+    ports:
+      - "3000:3000"
+
+  postgredb:
+    image: postgres
+    container_name: postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=dgtics
+    volumes:
+      - ../database/postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
